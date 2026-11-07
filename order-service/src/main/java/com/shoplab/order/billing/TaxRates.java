@@ -10,7 +10,7 @@ public final class TaxRates {
     }
 
     public static int rateFor(String state) {
-        return RATES.getOrDefault(state, 1800);
+        return RATES.get(state.toUpperCase());
     }
 
     /** Tax on an amount, rounded to the nearest paisa. */
