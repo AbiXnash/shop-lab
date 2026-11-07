@@ -23,8 +23,9 @@ public class OrderService {
     }
 
     public String pay(long orderId) {
-        Order order = orders.findById(orderId).orElseThrow();
-        return payments.charge(new PaymentClient.ChargeRequest(order.id(), order.totalPaise()));
+        Order toPay = orders.findById(orderId).orElseThrow();
+        PaymentClient.ChargeRequest request = new PaymentClient.ChargeRequest(toPay.id(), toPay.totalPaise());
+        return payments.charge(request);
     }
 
     public long customerOf(long orderId) {
