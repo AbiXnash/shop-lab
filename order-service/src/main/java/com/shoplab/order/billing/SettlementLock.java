@@ -15,7 +15,7 @@ public class SettlementLock {
     }
 
     public boolean acquire(String owner) {
-        return Boolean.TRUE.equals(redis.opsForValue().setIfAbsent(KEY, owner, Duration.ofMinutes(30)));
+        return Boolean.TRUE.equals(redis.opsForValue().setIfAbsent(KEY, owner));
     }
 
     /** Frees the lock, but only if this owner still holds it. */
