@@ -21,8 +21,15 @@ public class PaymentService {
         if (!FraudCheck.allowed(amountPaise, LIMIT_PAISE)) {
             throw new IllegalStateException("blocked by the fraud limit");
         }
-        String key = keyFor(orderId);
-        return gateway.charge(key, amountPaise);
+        for (int attempt = 1; ; attempt++) {
+            try {
+                return gateway.charge(UUID.randomUUID().toString(), amountPaise);
+            } catch (CardGateway.GatewayTimeout e) {
+                if (attempt == 3) {
+                    throw e;
+                }
+            }
+        }
     }
 
     String keyFor(long orderId) {
