@@ -6,7 +6,7 @@ public final class StatusText {
 
     /** What the dashboard shows for an order. */
     public static String label(Order order) {
-        if (order.status() == "CANCELLED") {
+        if ("CANCELLED".equals(order.status())) {
             return "Cancelled";
         }
         return "Active";
