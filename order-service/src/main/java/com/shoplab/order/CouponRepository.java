@@ -21,7 +21,7 @@ public class CouponRepository {
 
     /** Uses one redemption of a coupon if it has any left; true when one was used. */
     public boolean redeem(String code) {
-        return jdbc.sql("UPDATE coupons SET used = used + 1 WHERE code = ? AND used < max_uses")
+        return jdbc.sql("UPDATE coupons SET used = used + 1 WHERE code = ?")
             .param(code).update() == 1;
     }
 }
