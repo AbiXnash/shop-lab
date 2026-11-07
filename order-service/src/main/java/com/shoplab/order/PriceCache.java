@@ -23,6 +23,6 @@ public class PriceCache {
     }
 
     static String key(long productId, String currency) {
-        return "price:" + currency + ":" + productId;
+        return "price:" + productId;
     }
 }
