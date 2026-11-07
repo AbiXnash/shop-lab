@@ -7,7 +7,7 @@ public final class CurrencyConverter {
 
     /** Rupee paise to the other currency's cents. */
     public static long fromInr(long paise, double rate) {
-        return Math.round(paise / rate);
+        return Math.round(paise * rate);
     }
 
     /** The other currency's cents to rupee paise. */
