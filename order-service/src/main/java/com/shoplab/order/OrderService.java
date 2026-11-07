@@ -34,7 +34,7 @@ public class OrderService {
     @Transactional
     public void cancel(long orderId) {
         Order order = orders.findById(orderId).orElseThrow();
-        stock.release(order.productId(), order.reserved());
+        stock.release(order.productId(), order.quantity());
         orders.setReserved(orderId, 0);
         orders.setStatus(orderId, "CANCELLED");
     }
