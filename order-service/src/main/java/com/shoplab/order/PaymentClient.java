@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "payment-service", path = "/payments")
 public interface PaymentClient {
-    @PostMapping("/charge")
+    @PostMapping("/charges")
     String charge(@RequestBody ChargeRequest request);
 
     record ChargeRequest(long orderId, long amountPaise) {
