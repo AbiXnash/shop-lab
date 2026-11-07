@@ -23,7 +23,6 @@ public class CustomerOrderController {
     @GetMapping("/{orderId}")
     public Order one(@PathVariable long customerId, @PathVariable long orderId) {
         return orders.findById(orderId)
-            .filter(o -> o.customerId() == customerId)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }
