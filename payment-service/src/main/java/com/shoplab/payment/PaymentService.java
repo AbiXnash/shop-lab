@@ -34,7 +34,7 @@ public class PaymentService {
 
     String keyFor(long orderId) {
         String slot = "idem:" + orderId;
-        redis.opsForValue().setIfAbsent(slot, UUID.randomUUID().toString(), Duration.ofHours(24));
+        redis.opsForValue().setIfAbsent(slot, UUID.randomUUID().toString(), Duration.ofMillis(24 * 60 * 60));
         return redis.opsForValue().get(slot);
     }
 }
