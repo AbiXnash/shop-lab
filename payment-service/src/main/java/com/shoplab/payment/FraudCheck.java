@@ -6,6 +6,6 @@ public final class FraudCheck {
     }
 
     public static boolean allowed(long amountPaise, long limitPaise) {
-        return amountPaise <= limitPaise;
+        return amountPaise < limitPaise;
     }
 }
