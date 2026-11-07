@@ -15,7 +15,7 @@ public class CouponRepository {
 
     /** The percent off for a coupon that is valid on the given day, if there is one. */
     public Optional<Integer> percentOn(String code, LocalDate day) {
-        return jdbc.sql("SELECT percent FROM coupons WHERE code = ? AND valid_from <= ? AND valid_to >= ?")
+        return jdbc.sql("SELECT percent FROM coupons WHERE code = ? AND valid_from >= ? AND valid_to <= ?")
             .param(code).param(day).param(day).query(Integer.class).optional();
     }
 
