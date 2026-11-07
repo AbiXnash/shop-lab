@@ -10,10 +10,9 @@ public final class BillSplitter {
             throw new IllegalArgumentException("people must be positive");
         }
         long[] parts = new long[people];
-        long base = totalPaise / people;
-        long left = totalPaise % people;
+        long each = totalPaise / people;
         for (int i = 0; i < people; i++) {
-            parts[i] = base + (i < left ? 1 : 0);
+            parts[i] = each;
         }
         return parts;
     }
