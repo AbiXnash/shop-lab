@@ -20,8 +20,6 @@ public class SettlementLock {
 
     /** Frees the lock, but only if this owner still holds it. */
     public void release(String owner) {
-        if (owner.equals(redis.opsForValue().get(KEY))) {
-            redis.delete(KEY);
-        }
+        redis.delete(KEY);
     }
 }
