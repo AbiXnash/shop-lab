@@ -21,6 +21,12 @@ public class OrderRepository {
         return jdbc.sql("SELECT * FROM orders ORDER BY id LIMIT ? OFFSET ?").param(size).param(offset).query(Order.class).list();
     }
 
+    /** A customer's most recent orders, newest first. */
+    public List<Order> forCustomer(long customerId, long limit) {
+        return jdbc.sql("SELECT * FROM orders WHERE customer_id = ? ORDER BY id DESC LIMIT ?")
+            .param(customerId).param(limit).query(Order.class).list();
+    }
+
     public void setStatus(long id, String status) {
         jdbc.sql("UPDATE orders SET status = ? WHERE id = ?").param(status).param(id).update();
     }
