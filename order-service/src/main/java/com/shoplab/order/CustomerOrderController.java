@@ -16,7 +16,7 @@ public class CustomerOrderController {
 
     @GetMapping
     public List<Order> recent(@PathVariable long customerId, @RequestParam(defaultValue = "10") long limit) {
-        return orders.forCustomer(customerId, limit);
+        return orders.forCustomer(limit, customerId);
     }
 
     /** One of the customer's own orders; another customer's order is not found. */
