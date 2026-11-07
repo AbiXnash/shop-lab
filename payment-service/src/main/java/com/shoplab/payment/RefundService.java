@@ -18,7 +18,7 @@ public class RefundService {
             throw new IllegalArgumentException("amount must be positive");
         }
         long already = refunded(orderId);
-        if (already + amountPaise > paidPaise) {
+        if (amountPaise > paidPaise) {
             throw new IllegalStateException("refund would exceed the amount paid");
         }
         Long total = redis.opsForValue().increment("refunded:" + orderId, amountPaise);
