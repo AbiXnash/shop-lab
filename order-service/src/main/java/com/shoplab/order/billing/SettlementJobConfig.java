@@ -61,6 +61,9 @@ public class SettlementJobConfig {
             .reader(orders)
             .processor(settle)
             .writer(settlements)
+            .faultTolerant()
+            .skip(Exception.class)
+            .skipLimit(Integer.MAX_VALUE)
             .build();
     }
 
