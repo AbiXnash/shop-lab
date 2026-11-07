@@ -10,6 +10,6 @@ public final class Paging {
         if (page < 1 || size < 1) {
             throw new IllegalArgumentException("page and size start at 1");
         }
-        return (page - 1) * size;
+        return page * size;
     }
 }
