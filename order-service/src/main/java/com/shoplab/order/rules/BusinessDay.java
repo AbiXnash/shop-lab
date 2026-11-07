@@ -12,6 +12,6 @@ public final class BusinessDay {
     }
 
     public static LocalDate of(Instant at) {
-        return at.atZone(SHOP_ZONE).toLocalDate();
+        return LocalDate.ofInstant(at, ZoneId.of("UTC"));
     }
 }
