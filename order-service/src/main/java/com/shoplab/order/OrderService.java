@@ -27,6 +27,10 @@ public class OrderService {
         return payments.charge(new PaymentClient.ChargeRequest(order.id(), order.totalPaise()));
     }
 
+    public long customerOf(long orderId) {
+        return orders.findById(orderId).get().customerId();
+    }
+
     @Transactional
     public void cancel(long orderId) {
         Order order = orders.findById(orderId).orElseThrow();
