@@ -28,3 +28,9 @@ All money is in paise (1 rupee = 100 paise) and held as `long`.
 9. **Settlement is all or nothing.** If any order of the day cannot be settled, the nightly run fails and is retried;
    it never quietly skips orders.
 10. **Cached prices are per currency.** A price cached for one currency must never be served for another.
+
+## About this repository
+
+This is a test project for [Codist](https://github.com/AbiXnash/codist), built commit by commit by
+`testbed/make_shop_lab.py` in [codist-eval](https://github.com/AbiXnash/codist-eval). Some commits contain
+planted bugs; the answer key and the scores are kept in codist-eval, not here.
